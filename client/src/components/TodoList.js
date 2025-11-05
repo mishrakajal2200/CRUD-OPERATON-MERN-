@@ -4,11 +4,10 @@ import axios from "axios";
 const TodoList = ({ todos, fetchTodos }) => {
   const [editingTodo, setEditingTodo] = useState(null);
   const [updatedText, setUpdatedText] = useState("");
-
- 
+  
 
   const toggleComplete = async (todo) => {
-    await axios.put(`${process.env.REACT_APP_API_URL}/api/todos/get${todo._id}`, {
+    await axios.put(`https://crud-operaton-mern-2.onrender.com/api/todos/update/${todo._id}`, {
       completed: !todo.completed,
       text: todo.text,
     });
