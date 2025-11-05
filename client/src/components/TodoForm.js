@@ -7,7 +7,7 @@ const TodoForm = ({ fetchTodos }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!text.trim()) return;
-    await axios.post("http://localhost:5000/api/todos/add", { text });
+    await axios.post("https://crud-operaton-mern-2.onrender.com/api/todos/add", { text });
     setText("");
     fetchTodos();
   };

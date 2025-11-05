@@ -5,8 +5,10 @@ const TodoList = ({ todos, fetchTodos }) => {
   const [editingTodo, setEditingTodo] = useState(null);
   const [updatedText, setUpdatedText] = useState("");
 
+ 
+
   const toggleComplete = async (todo) => {
-    await axios.put(`http://localhost:5000/api/todos/update/${todo._id}`, {
+    await axios.put(`${process.env.REACT_APP_API_URL}/api/todos/get${todo._id}`, {
       completed: !todo.completed,
       text: todo.text,
     });
@@ -14,7 +16,7 @@ const TodoList = ({ todos, fetchTodos }) => {
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:5000/api/todos/delete/${id}`);
+    await axios.delete(`https://crud-operaton-mern-2.onrender.com/api/todos/delete/${id}`);
     fetchTodos();
   };
 
@@ -25,7 +27,7 @@ const TodoList = ({ todos, fetchTodos }) => {
 
   const handleUpdate = async (id) => {
     if (!updatedText.trim()) return;
-    await axios.put(`http://localhost:5000/api/todos/update/${id}`, {
+    await axios.put(`https://crud-operaton-mern-2.onrender.com/api/todos/update/${id}`, {
       text: updatedText,
     });
     setEditingTodo(null);
